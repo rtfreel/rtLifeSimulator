@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <SDL.h>
+#include "game.h"
 
 int main(int argc, char* args[]) {
-	printf("Hello world!");
+	Game game;
 	return 0;
 }
