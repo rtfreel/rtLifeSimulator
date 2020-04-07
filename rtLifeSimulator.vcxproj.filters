@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\sprites">
+      <UniqueIdentifier>{856d90ef-ee9b-43ef-b695-820c659342a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +30,12 @@
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animatedGameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphics.h">
@@ -38,5 +47,40 @@
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="gameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animatedGameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="source\sprites\blue_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\brown_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\green_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\grey_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\red_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\violet_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\yellow_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\background.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
   </ItemGroup>
 </Project>
