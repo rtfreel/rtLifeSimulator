@@ -14,10 +14,9 @@ public:
 	AnimatedGameObject();
 	AnimatedGameObject(Graphics& graphics, const std::string& filePath, int sourceX, int sourceY, int width, int height, float posX, float posY, float timeToUpdate);
 
-	void playAnimation(std::string animation, bool once = false);
+	void playAnimation(std::string animation, int frame = 0, bool once = false );
 	void update(int elapsedTime);
 	void draw(Graphics &graphics, int x, int y);
-	virtual void setupAnimations();
 
 protected:
 	double _timeToUpdate;
@@ -29,7 +28,8 @@ protected:
 	void stopAnimation();
 	void setVisible(bool visible);
 
-	virtual void animationDone(std::string currentAnimation);
+	virtual void animationDone(std::string currentAnimation) = 0;
+	virtual void setupAnimations() = 0;
 
 private:
 	std::map<std::string, std::vector<SDL_Rect>> _animations;

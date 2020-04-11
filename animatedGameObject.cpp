@@ -26,12 +26,11 @@ void AnimatedGameObject::resetAnimations() {
 	this->_offsets.clear();
 }
 
-void AnimatedGameObject::playAnimation(std::string animation, bool once) {
+void AnimatedGameObject::playAnimation(std::string animation, int frame, bool once) {
 	this->_currentAnimationOnce = once;
 	if (this->_currentAnimation != animation) {
 		this->_currentAnimation = animation;
-		//TODO: random if needed
-		this->_frameIndex = 0;
+		this->_frameIndex = frame;
 	}
 }
 
@@ -67,18 +66,10 @@ void AnimatedGameObject::draw(Graphics& graphics, int x, int y) {
 		SDL_Rect destinationRectangle;
 		destinationRectangle.x = x + this->_offsets[this->_currentAnimation].x;
 		destinationRectangle.y = y + this->_offsets[this->_currentAnimation].y;
-		destinationRectangle.w = this->_sourceRect.w * pow(globals::SCALE_MULTIPLIER, 6);
-		destinationRectangle.h = this->_sourceRect.h * pow(globals::SCALE_MULTIPLIER, 6);
+		destinationRectangle.w = this->_sourceRect.w * pow(globals::SCALE_MULTIPLIER, this->_sizePower);
+		destinationRectangle.h = this->_sourceRect.h * pow(globals::SCALE_MULTIPLIER, this->_sizePower);
 
 		SDL_Rect sourceRect = this->_animations[this->_currentAnimation][this->_frameIndex];
 		graphics.blitSurface(this->_spriteSheet, &sourceRect, &destinationRectangle);
 	}
-}
-
-void AnimatedGameObject::animationDone(std::string animation) {
-
-};
-
-void AnimatedGameObject::setupAnimations() {
-	this->addAnimation(22, 0, 0, "Breathing", 16, 16, Vector2(0, 0));
 }

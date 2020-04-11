@@ -14,13 +14,16 @@ public:
 	virtual ~GameObject();
 	virtual void update();
 	void draw(Graphics& graphics, int x, int y);
+	void increase();
+	void decrease();
 
 protected:
 	SDL_Rect _sourceRect;
 	SDL_Texture* _spriteSheet;
+	float _x, _y;
+	int _sizePower = 0;
 
 private:
-	float _x, _y;
 };
 
 #endif

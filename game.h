@@ -2,7 +2,9 @@
 #define GAME_H
 
 #include "gameObject.h"
-#include "animatedGameObject.h"
+#include "cell.h"
+#include "terrain.h"
+#include <vector>
 
 class Graphics;
 
@@ -17,7 +19,8 @@ private:
 	int min(int a, int b);
 
 	GameObject _bg;
-	AnimatedGameObject _cell;
+	//Terrain* _terrain;
+	std::vector<Cell> _cells;
 };
 
 #endif

@@ -36,6 +36,15 @@
     <ClCompile Include="animatedGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="terrainGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphics.h">
@@ -56,6 +65,18 @@
     <ClInclude Include="animatedGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="terrainGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="source\sprites\blue_cell.png">
@@ -73,13 +94,16 @@
     <Image Include="source\sprites\red_cell.png">
       <Filter>Resource Files\sprites</Filter>
     </Image>
-    <Image Include="source\sprites\violet_cell.png">
-      <Filter>Resource Files\sprites</Filter>
-    </Image>
     <Image Include="source\sprites\yellow_cell.png">
       <Filter>Resource Files\sprites</Filter>
     </Image>
     <Image Include="source\sprites\background.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\purple_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\animBack.png">
       <Filter>Resource Files\sprites</Filter>
     </Image>
   </ItemGroup>
