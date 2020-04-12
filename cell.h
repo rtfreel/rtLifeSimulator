@@ -10,7 +10,6 @@ class Cell : public AnimatedGameObject {
 public:
 	Cell();
 	Cell(Graphics& graphics, float x, float y);
-	void draw(Graphics& graphics);
 	void update(float elapsedTime);
 
 	void moveLeft();

@@ -61,15 +61,40 @@ void AnimatedGameObject::update(int elapsedTime) {
 	}
 }
 
-void AnimatedGameObject::draw(Graphics& graphics, int x, int y) {
+void AnimatedGameObject::draw(Graphics& graphics, int x, int y, std::pair<int, int> topLeftOffset, std::pair<int, int> botRightOffset) {
 	if (this->_visible) {
+		SDL_Rect sourceRect = this->_animations[this->_currentAnimation][this->_frameIndex];
+
+		//top-left ofsetting
+		if (topLeftOffset.first > 0) {
+			this->_sourceRect.x = _sourceX + topLeftOffset.first;
+			sourceRect.x += topLeftOffset.first;
+		}
+		if (topLeftOffset.second > 0) {
+			this->_sourceRect.y = _sourceY + topLeftOffset.second;
+			sourceRect.y += topLeftOffset.second;
+		}
+		this->_sourceRect.w = _sourceWidth - abs(topLeftOffset.first);
+		this->_sourceRect.h = _sourceHeight - abs(topLeftOffset.second);
+		sourceRect.w -= abs(topLeftOffset.first);
+		sourceRect.h -= abs(topLeftOffset.second);
+
+		//bottom-right offsetting
+		if (botRightOffset.first > 0) {
+			this->_sourceRect.w -= botRightOffset.first;
+			sourceRect.w -= botRightOffset.first;
+		}
+		if (botRightOffset.second > 0) {
+			this->_sourceRect.w -= botRightOffset.second;
+			sourceRect.h -= botRightOffset.second;
+		}
+
 		SDL_Rect destinationRectangle;
 		destinationRectangle.x = x + this->_offsets[this->_currentAnimation].x;
 		destinationRectangle.y = y + this->_offsets[this->_currentAnimation].y;
-		destinationRectangle.w = this->_sourceRect.w * pow(globals::SCALE_MULTIPLIER, this->_sizePower);
-		destinationRectangle.h = this->_sourceRect.h * pow(globals::SCALE_MULTIPLIER, this->_sizePower);
+		destinationRectangle.w = this->_sourceRect.w * pow(globals::SCALE_MULTIPLIER, this->_scale);
+		destinationRectangle.h = this->_sourceRect.h * pow(globals::SCALE_MULTIPLIER, this->_scale);
 
-		SDL_Rect sourceRect = this->_animations[this->_currentAnimation][this->_frameIndex];
 		graphics.blitSurface(this->_spriteSheet, &sourceRect, &destinationRectangle);
 	}
 }

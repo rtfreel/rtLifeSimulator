@@ -13,7 +13,13 @@ public:
 	
 	virtual ~GameObject();
 	virtual void update();
-	void draw(Graphics& graphics, int x, int y);
+	void draw(Graphics& graphics, int x, int y, std::pair<int, int> topLeftOffset, std::pair<int, int>bottomRightOffset);
+
+	float getX();
+	float getY();
+	int getWidth();
+	int getHeight();
+
 	void increase();
 	void decrease();
 
@@ -21,7 +27,8 @@ protected:
 	SDL_Rect _sourceRect;
 	SDL_Texture* _spriteSheet;
 	float _x, _y;
-	int _sizePower = 0;
+	int  _sourceX, _sourceY, _sourceWidth, _sourceHeight;
+	int _scale = 0;
 
 private:
 };

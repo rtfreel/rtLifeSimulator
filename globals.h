@@ -8,7 +8,8 @@ namespace globals {
 	const int SCREEN_WIDTH = 1600;
 	const int SCREEN_HEIGHT = 800;
 
-	const float SCALE_MULTIPLIER = 1.58489f;
+	const int SCALE_LIMIT = 20;
+	const float SCALE_MULTIPLIER = 1.189207f;
 
 	const std::vector<std::string> CELL_ANIMATIONS = {
 		"source/sprites/blue_cell.png",

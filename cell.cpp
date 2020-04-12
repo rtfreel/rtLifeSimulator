@@ -46,10 +46,6 @@ void Cell::update(float elapsedTime) {
 	AnimatedGameObject::update(elapsedTime);
 }
 
-void Cell::draw(Graphics& graphics) {
-	AnimatedGameObject::draw(graphics, this->_x, this->_y);
-}
-
 std::string Cell::getRandomColor(){
 	return globals::CELL_ANIMATIONS[rand() % globals::CELL_ANIMATIONS.size()];
 }

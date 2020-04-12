@@ -151,6 +151,7 @@
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="observer.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainGenerator.cpp" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="graphics.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="observer.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="terrainGenerator.h" />
   </ItemGroup>

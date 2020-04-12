@@ -16,7 +16,7 @@ public:
 
 	void playAnimation(std::string animation, int frame = 0, bool once = false );
 	void update(int elapsedTime);
-	void draw(Graphics &graphics, int x, int y);
+	void draw(Graphics &graphics, int x, int y, std::pair<int, int> topLeftOffset, std::pair<int, int> bottomRightOffset);
 
 protected:
 	double _timeToUpdate;
