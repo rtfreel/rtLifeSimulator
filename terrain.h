@@ -10,8 +10,6 @@ class Terrain : public GameObject {
 public:
 	Terrain();
 	Terrain(Graphics& graphics, int width, int height);
-
-	int* _groundType;
 };
 
 #endif

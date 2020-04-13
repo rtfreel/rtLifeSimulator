@@ -85,7 +85,7 @@ void AnimatedGameObject::draw(Graphics& graphics, int x, int y, std::pair<int, i
 			sourceRect.w -= botRightOffset.first;
 		}
 		if (botRightOffset.second > 0) {
-			this->_sourceRect.w -= botRightOffset.second;
+			this->_sourceRect.h -= botRightOffset.second;
 			sourceRect.h -= botRightOffset.second;
 		}
 

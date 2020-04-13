@@ -8,6 +8,7 @@ class Graphics;
 
 class Observer {
 public:
+	Observer();
 	Observer(Graphics& graphics, float x, float y, int width, int height);
 
 	void addTerrain(Terrain* terrain);
@@ -18,16 +19,20 @@ public:
 	void increase();
 	void decrease();
 	void show();
+	void update();
 
 	float x, y;
 	int w, h;
 
 private:
 	void clear();
-	void drawObject();
+	template <typename T>
+	void drawObject(T* object);
 	
 	int _scale = 0;
-	Graphics& _graphics;
+	int _unscaledWidth, _unscaledHeight;
+	float _unscaledX, _unscaledY;
+	Graphics* _graphics;
 	Terrain* _terrain;
 	std::vector<GameObject*> _objects;
 	std::vector<AnimatedGameObject*> _animatedObjects;

@@ -27,17 +27,21 @@ void Game::gameLoop() {
     SDL_Event event;
     Input input;
 
-    //TerrainGenerator tg = TerrainGenerator(graphics, 2048, 2048, 9, 1.85f);
-    //this->_terrain = tg.getTerrain();
-    this->_bg = GameObject(graphics, "source/sprites/background.png", 0, 0, 16, 80, 100, 100);
-    this->_cells.push_back(Cell(graphics, 0, 0));
+    ////TerrainGenerator tg = TerrainGenerator(graphics, 2048, 2048, 9, 1.85f);
+    ////this->_terrain = tg.getTerrain();
 
-    //this->_back = Back(graphics, 0, 0);
-    //for (int i = 0; i < 20; i++) {
-    //    for (int j = 0; j < 10; j++) {
-    //        this->_cells.push_back(Cell(graphics, 100 * i + 20, 100 * j + 20));
-    //    }
-    //}
+    //this->_bg = GameObject(graphics, "source/sprites/background.png", 0, 0, 16, 80, 100, 100);
+    //this->_cells.push_back(Cell(graphics, 0, 0));
+
+    ////this->_back = Back(graphics, 0, 0);
+    ////for (int i = 0; i < 20; i++) {
+    ////    for (int j = 0; j < 10; j++) {
+    ////        this->_cells.push_back(Cell(graphics, 100 * i + 20, 100 * j + 20));
+    ////    }
+    ////}
+
+    this->_map = Map(graphics);
+    this->_observer = this->_map.getObserver();
 
     int LAST_UPDATE_TIME = SDL_GetTicks();
     while (true) {
@@ -68,25 +72,25 @@ void Game::gameLoop() {
                 return;
             }
         }
-        if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
-            return;
-        }
-        else if (input.wasKeyPressed(SDL_SCANCODE_LEFT)) {
-            this->_cells.at(0).moveLeft();
-        }
-        else if (input.wasKeyPressed(SDL_SCANCODE_RIGHT)) {
-            this->_cells.at(0).moveRight();
-        }
-        else if (input.wasKeyPressed(SDL_SCANCODE_UP)) {
-            this->_cells.at(0).moveUp();
-        }
-        else if (input.wasKeyPressed(SDL_SCANCODE_DOWN)) {
-            this->_cells.at(0).moveDown();
-        }
-        if (!input.isKeyHeld(SDL_SCANCODE_LEFT) && !input.isKeyHeld(SDL_SCANCODE_RIGHT) &&
-            !input.isKeyHeld(SDL_SCANCODE_UP) && !input.isKeyHeld(SDL_SCANCODE_DOWN)) {
-            this->_cells.at(0).stopMoving();
-        }
+        //if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
+        //    return;
+        //}
+        //else if (input.wasKeyPressed(SDL_SCANCODE_LEFT)) {
+        //    this->_cells.at(0).moveLeft();
+        //}
+        //else if (input.wasKeyPressed(SDL_SCANCODE_RIGHT)) {
+        //    this->_cells.at(0).moveRight();
+        //}
+        //else if (input.wasKeyPressed(SDL_SCANCODE_UP)) {
+        //    this->_cells.at(0).moveUp();
+        //}
+        //else if (input.wasKeyPressed(SDL_SCANCODE_DOWN)) {
+        //    this->_cells.at(0).moveDown();
+        //}
+        //if (!input.isKeyHeld(SDL_SCANCODE_LEFT) && !input.isKeyHeld(SDL_SCANCODE_RIGHT) &&
+        //    !input.isKeyHeld(SDL_SCANCODE_UP) && !input.isKeyHeld(SDL_SCANCODE_DOWN)) {
+        //    this->_cells.at(0).stopMoving();
+        //}
         if (input.wasMousePressed(SDL_BUTTON_LEFT)) {
             //TODO: map moving
         }
@@ -94,18 +98,22 @@ void Game::gameLoop() {
             //TODO: map moving
         }
         if(input.scrolledUp){
-            //this->_terrain->increase();
-            this->_bg.increase();
-            for (int i = 0; i < this->_cells.size(); i++) {
-                this->_cells.at(i).increase();
-            }
+            ////this->_terrain->increase();
+
+            //this->_bg.increase();
+            //for (int i = 0; i < this->_cells.size(); i++) {
+            //    this->_cells.at(i).increase();
+            //}
+            this->_observer->increase();
         }
         if (input.scrolledDown) {
-            //this->_terrain->decrease();
-            this->_bg.decrease();
-            for (int i = 0; i < this->_cells.size(); i++) {
-                this->_cells.at(i).decrease();
-            }
+            ////this->_terrain->decrease();
+
+            //this->_bg.decrease();
+            //for (int i = 0; i < this->_cells.size(); i++) {
+            //    this->_cells.at(i).decrease();
+            //}
+            this->_observer->decrease();
         }
 
         const int CURRENT_TIME_MS = SDL_GetTicks();
@@ -120,22 +128,23 @@ void Game::gameLoop() {
 void Game::draw(Graphics& graphics) {
     graphics.clear();
 
-    //this->_terrain->draw(graphics, 0, 0);
-    this->_bg.draw(graphics, 0, 0);
-    for (int i = 0; i < this->_cells.size(); i++) {
-        this->_cells.at(i).draw(graphics);
-    }
+    ////this->_terrain->draw(graphics, 0, 0);
+    //this->_bg.draw(graphics, 0, 0);
+    //for (int i = 0; i < this->_cells.size(); i++) {
+    //    this->_cells.at(i).draw(graphics);
+    //}
+    this->_observer->show();
 
     graphics.render();
 }
 
 void Game::update(float elapsedTime) {
-    //this->_terrain->update();
-    this->_bg.update();
-    for (int i = 0; i < this->_cells.size(); i++) {
-        this->_cells.at(i).update(elapsedTime);
-    }
-
+    ////this->_terrain->update();
+    //this->_bg.update();
+    //for (int i = 0; i < this->_cells.size(); i++) {
+    //    this->_cells.at(i).update(elapsedTime);
+    //}
+    this->_map.update(elapsedTime);
 }
 
 int Game::min(int a, int b) {

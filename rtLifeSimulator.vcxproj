@@ -151,6 +151,7 @@
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="observer.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainGenerator.cpp" />

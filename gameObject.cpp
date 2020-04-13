@@ -35,7 +35,7 @@ void GameObject::draw(Graphics &graphics, int x, int y, std::pair<int, int> topL
 	if (botRightOffset.first > 0)
 		this->_sourceRect.w -= botRightOffset.first;
 	if (botRightOffset.second > 0)
-		this->_sourceRect.w -= botRightOffset.second;
+		this->_sourceRect.h -= botRightOffset.second;
 	SDL_Rect destinationRectangle = { x, y, this->_sourceRect.w * pow(globals::SCALE_MULTIPLIER, this->_scale), this->_sourceRect.h * pow(globals::SCALE_MULTIPLIER, this->_scale) };
 	graphics.blitSurface(this->_spriteSheet, &this->_sourceRect, &destinationRectangle);
 }
@@ -59,7 +59,7 @@ int GameObject::getHeight() {
 }
 
 void GameObject::increase() {
-	if (_scale < globals::SCALE_LIMIT) {
+	if (this->_scale < globals::SCALE_LIMIT) {
 		this->_scale++;
 	}
 	else {
@@ -68,7 +68,7 @@ void GameObject::increase() {
 }
 
 void GameObject::decrease() {
-	if (_scale > 0) {
+	if (this->_scale > 0) {
 		this->_scale--;
 	}
 	else {
