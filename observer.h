@@ -16,6 +16,8 @@ public:
 	void addAnimatedObject(AnimatedGameObject* animatedObject);
 	void addCell(Cell* cell);
 
+	void activate(std::pair<int, int> pos);
+	void move(std::pair<int, int> move);
 	void increase();
 	void decrease();
 	void show();

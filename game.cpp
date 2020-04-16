@@ -27,19 +27,6 @@ void Game::gameLoop() {
     SDL_Event event;
     Input input;
 
-    ////TerrainGenerator tg = TerrainGenerator(graphics, 2048, 2048, 9, 1.85f);
-    ////this->_terrain = tg.getTerrain();
-
-    //this->_bg = GameObject(graphics, "source/sprites/background.png", 0, 0, 16, 80, 100, 100);
-    //this->_cells.push_back(Cell(graphics, 0, 0));
-
-    ////this->_back = Back(graphics, 0, 0);
-    ////for (int i = 0; i < 20; i++) {
-    ////    for (int j = 0; j < 10; j++) {
-    ////        this->_cells.push_back(Cell(graphics, 100 * i + 20, 100 * j + 20));
-    ////    }
-    ////}
-
     this->_map = Map(graphics);
     this->_observer = this->_map.getObserver();
 
@@ -72,47 +59,35 @@ void Game::gameLoop() {
                 return;
             }
         }
-        //if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
-        //    return;
-        //}
+        if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
+            return;
+        }
         //else if (input.wasKeyPressed(SDL_SCANCODE_LEFT)) {
-        //    this->_cells.at(0).moveLeft();
+        //    this->_observer->moveX(-20);
         //}
         //else if (input.wasKeyPressed(SDL_SCANCODE_RIGHT)) {
-        //    this->_cells.at(0).moveRight();
+        //    this->_observer->moveX(20);
         //}
         //else if (input.wasKeyPressed(SDL_SCANCODE_UP)) {
-        //    this->_cells.at(0).moveUp();
+        //    this->_observer->moveY(-20);
         //}
         //else if (input.wasKeyPressed(SDL_SCANCODE_DOWN)) {
-        //    this->_cells.at(0).moveDown();
+        //    this->_observer->moveY(20);
         //}
         //if (!input.isKeyHeld(SDL_SCANCODE_LEFT) && !input.isKeyHeld(SDL_SCANCODE_RIGHT) &&
         //    !input.isKeyHeld(SDL_SCANCODE_UP) && !input.isKeyHeld(SDL_SCANCODE_DOWN)) {
-        //    this->_cells.at(0).stopMoving();
+        //    //this->_cells.at(0).stopMoving();
         //}
-        if (input.wasMousePressed(SDL_BUTTON_LEFT)) {
-            //TODO: map moving
+        if (input.isMouseHeld()) {
+            this->_observer->move(input.getMove());
         }
-        if (input.wasMouseReleased(SDL_BUTTON_LEFT)) {
-            //TODO: map moving
+        if (input.mouseClicked()) {
+            //TODO: this->_observer->activate(input.getClick());
         }
         if(input.scrolledUp){
-            ////this->_terrain->increase();
-
-            //this->_bg.increase();
-            //for (int i = 0; i < this->_cells.size(); i++) {
-            //    this->_cells.at(i).increase();
-            //}
             this->_observer->increase();
         }
         if (input.scrolledDown) {
-            ////this->_terrain->decrease();
-
-            //this->_bg.decrease();
-            //for (int i = 0; i < this->_cells.size(); i++) {
-            //    this->_cells.at(i).decrease();
-            //}
             this->_observer->decrease();
         }
 
@@ -127,23 +102,11 @@ void Game::gameLoop() {
 
 void Game::draw(Graphics& graphics) {
     graphics.clear();
-
-    ////this->_terrain->draw(graphics, 0, 0);
-    //this->_bg.draw(graphics, 0, 0);
-    //for (int i = 0; i < this->_cells.size(); i++) {
-    //    this->_cells.at(i).draw(graphics);
-    //}
     this->_observer->show();
-
     graphics.render();
 }
 
 void Game::update(float elapsedTime) {
-    ////this->_terrain->update();
-    //this->_bg.update();
-    //for (int i = 0; i < this->_cells.size(); i++) {
-    //    this->_cells.at(i).update(elapsedTime);
-    //}
     this->_map.update(elapsedTime);
 }
 

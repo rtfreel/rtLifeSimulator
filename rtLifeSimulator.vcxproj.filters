@@ -106,13 +106,7 @@
     <Image Include="source\sprites\yellow_cell.png">
       <Filter>Resource Files\sprites</Filter>
     </Image>
-    <Image Include="source\sprites\background.png">
-      <Filter>Resource Files\sprites</Filter>
-    </Image>
     <Image Include="source\sprites\purple_cell.png">
-      <Filter>Resource Files\sprites</Filter>
-    </Image>
-    <Image Include="source\sprites\animBack.png">
       <Filter>Resource Files\sprites</Filter>
     </Image>
   </ItemGroup>

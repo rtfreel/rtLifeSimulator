@@ -170,8 +170,6 @@
     <ClInclude Include="terrainGenerator.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="source\sprites\animBack.png" />
-    <Image Include="source\sprites\background.png" />
     <Image Include="source\sprites\blue_cell.png" />
     <Image Include="source\sprites\brown_cell.png" />
     <Image Include="source\sprites\green_cell.png" />

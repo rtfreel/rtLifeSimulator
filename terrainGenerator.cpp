@@ -99,9 +99,9 @@ void TerrainGenerator::print() {
 			case 12: r = 34; g = 177; b = 76; break;
 			case 13: r = 17; g = 153; b = 38; break;
 			case 14: r = 0; g = 128; b = 0; break;
-			case 15: r = 128; g = 64; b = 64; break;
+			case 15: r = 255; g = 255; b = 255; break;
 
-			case 16: r = 255; g = 255; b = 255; break;
+			case 16: r = 127; g = 127; b = 127; break;
 			}
 			img << r << " " << g << " " << b << std::endl;
 		}

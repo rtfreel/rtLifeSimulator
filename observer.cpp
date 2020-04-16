@@ -28,6 +28,11 @@ void Observer::addCell(Cell* cell) {
 	this->_cells.push_back(cell);
 }
 
+void Observer::move(std::pair<int, int> move) {
+	this->_unscaledX += move.first / pow(globals::SCALE_MULTIPLIER, this->_scale);
+	this->_unscaledY += move.second / pow(globals::SCALE_MULTIPLIER, this->_scale);
+}
+
 void Observer::increase() {
 	if (this->_scale < globals::SCALE_LIMIT) {
 		this->_scale++;
