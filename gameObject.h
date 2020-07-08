@@ -22,13 +22,22 @@ public:
 
 	void increase();
 	void decrease();
+	void setScale(int scale);
+	void setXWraparound(int min, int max);
+	void setYWraparound(int min, int max);
 
 protected:
+
+	void wraparound();
+
 	SDL_Rect _sourceRect;
 	SDL_Texture* _spriteSheet;
 	float _x, _y;
 	int  _sourceX, _sourceY, _sourceWidth, _sourceHeight;
 	int _scale = 0;
+
+	bool _wrapX = false, _wrapY = false;
+	int _wrapXMin = 0, _wrapXMax = 0, _wrapYMin = 0, _wrapYMax = 0;
 
 private:
 };

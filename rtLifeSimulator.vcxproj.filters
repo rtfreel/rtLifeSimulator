@@ -51,6 +51,9 @@
     <ClCompile Include="map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="minimap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphics.h">
@@ -86,6 +89,9 @@
     <ClInclude Include="observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="minimap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="source\sprites\blue_cell.png">
@@ -107,6 +113,9 @@
       <Filter>Resource Files\sprites</Filter>
     </Image>
     <Image Include="source\sprites\purple_cell.png">
+      <Filter>Resource Files\sprites</Filter>
+    </Image>
+    <Image Include="source\sprites\terrain_palette.png">
       <Filter>Resource Files\sprites</Filter>
     </Image>
   </ItemGroup>

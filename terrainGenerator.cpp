@@ -1,4 +1,5 @@
 #include "terrainGenerator.h"
+#include "globals.h"
 #include <fstream>
 #include <iostream>
 #include <random>
@@ -12,6 +13,7 @@ TerrainGenerator::TerrainGenerator(Graphics& graphics, int width, int height, in
 	generateNoise(detalisation, smoothness);
 	print();
 	this->_terrain = new Terrain(graphics, this->_w, this->_h);
+	this->_minimap = new Minimap(graphics);
 }
 
 void TerrainGenerator::generateSeed() {
@@ -70,11 +72,22 @@ Terrain* TerrainGenerator::getTerrain() {
 	return this->_terrain;
 }
 
+Minimap* TerrainGenerator::getMinimap() {
+	return this->_minimap;
+}
+
 void TerrainGenerator::print() {
-	std::ofstream img("source/sprites/terrain.ppm");
-	img << "P3" << std::endl;
-	img << this->_w << " " << this->_h << std::endl;
-	img << "255" << std::endl;
+	//generates terrain view file
+	std::ofstream terrainImg("source/sprites/terrain.ppm");
+	terrainImg << "P3" << std::endl;
+	terrainImg << this->_w << " " << this->_h << std::endl;
+	terrainImg << "255" << std::endl;
+
+	//generates minimap view file
+	std::ofstream minimapImg("source/sprites/minimap.ppm");
+	minimapImg << "P3" << std::endl;
+	minimapImg << globals::MINIMAP_WIDTH << " " << globals::MINIMAP_HEIGHT << std::endl;
+	minimapImg << "255" << std::endl;
 
 	for (int x = 0; x < this->_w; x++) {
 		for (int y = 0; y < this->_h; y++) {
@@ -103,7 +116,23 @@ void TerrainGenerator::print() {
 
 			case 16: r = 127; g = 127; b = 127; break;
 			}
-			img << r << " " << g << " " << b << std::endl;
+			terrainImg << r << " " << g << " " << b << std::endl;
+		}
+	}
+
+	for (int x = 0; x < this->_w; x += 8) {
+		for (int y = 0; y < this->_h; y += 8) {
+			int pixel = (int)(this->_noise[y * this->_w + x] * 4.0f);
+			int r = 0, g = 0, b = 0;
+			switch (pixel) {
+			case 0: r = 77; g = 190; b = 231; break;
+			case 1: r = 247; g = 235; b = 88; break;
+			case 2: r = 108; g = 204; b = 55; break;
+			case 3: r = 0; g = 128; b = 0; break;
+
+			case 4: r = 127; g = 127; b = 127; break;
+			}
+			minimapImg << r << " " << g << " " << b << std::endl;
 		}
 	}
 }

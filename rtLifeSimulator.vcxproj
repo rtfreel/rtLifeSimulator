@@ -152,6 +152,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="minimap.cpp" />
     <ClCompile Include="observer.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainGenerator.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="graphics.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="minimap.h" />
     <ClInclude Include="observer.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="terrainGenerator.h" />
@@ -176,6 +178,7 @@
     <Image Include="source\sprites\grey_cell.png" />
     <Image Include="source\sprites\red_cell.png" />
     <Image Include="source\sprites\purple_cell.png" />
+    <Image Include="source\sprites\terrain_palette.png" />
     <Image Include="source\sprites\yellow_cell.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

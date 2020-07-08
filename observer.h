@@ -2,6 +2,7 @@
 #define OBSERVER_H
 
 #include "terrain.h"
+#include "minimap.h"
 #include "cell.h"
 
 class Graphics;
@@ -15,6 +16,7 @@ public:
 	void addObject(GameObject* object);
 	void addAnimatedObject(AnimatedGameObject* animatedObject);
 	void addCell(Cell* cell);
+	void addMinimap(Minimap* minimap);
 
 	void activate(std::pair<int, int> pos);
 	void move(std::pair<int, int> move);
@@ -35,6 +37,7 @@ private:
 	int _unscaledWidth, _unscaledHeight;
 	float _unscaledX, _unscaledY;
 	Graphics* _graphics;
+	Minimap* _minimap;
 	Terrain* _terrain;
 	std::vector<GameObject*> _objects;
 	std::vector<AnimatedGameObject*> _animatedObjects;

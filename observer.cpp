@@ -12,6 +12,7 @@ Observer::Observer(Graphics& graphics, float x, float y, int width, int height) 
 	this->y = y;
 }
 
+
 void Observer::addTerrain(Terrain* terrain) {
 	this->_terrain = terrain;
 }
@@ -28,6 +29,10 @@ void Observer::addCell(Cell* cell) {
 	this->_cells.push_back(cell);
 }
 
+void Observer::addMinimap(Minimap* minimap) {
+	this->_minimap = minimap;
+}
+
 void Observer::move(std::pair<int, int> move) {
 	this->_unscaledX += move.first / pow(globals::SCALE_MULTIPLIER, this->_scale);
 	this->_unscaledY += move.second / pow(globals::SCALE_MULTIPLIER, this->_scale);
@@ -41,9 +46,9 @@ void Observer::increase() {
 		this->_scale = globals::SCALE_LIMIT;
 	}
 	this->_terrain->increase();
-	for (GameObject* object : this->_objects) { object->increase(); }
-	for (AnimatedGameObject* animatedObject : this->_animatedObjects) { animatedObject->increase(); }
-	for (Cell* cell : this->_cells) { cell->increase(); }
+	for (GameObject* object : this->_objects) { object->setScale(this->_scale); }
+	for (AnimatedGameObject* animatedObject : this->_animatedObjects) { animatedObject->setScale(this->_scale); }
+	for (Cell* cell : this->_cells) { cell->setScale(this->_scale); }
 }
 
 void Observer::decrease() {
@@ -54,9 +59,9 @@ void Observer::decrease() {
 		this->_scale = 0;
 	}
 	this->_terrain->decrease();
-	for (GameObject* object : this->_objects) { object->decrease(); }
-	for (AnimatedGameObject* animatedObject : this->_animatedObjects) { animatedObject->decrease(); }
-	for (Cell* cell : this->_cells) { cell->decrease(); }
+	for (GameObject* object : this->_objects) { object->setScale(this->_scale); }
+	for (AnimatedGameObject* animatedObject : this->_animatedObjects) { animatedObject->setScale(this->_scale); }
+	for (Cell* cell : this->_cells) { cell->setScale(this->_scale); }
 }
 
 void Observer::show() {
@@ -64,6 +69,8 @@ void Observer::show() {
 	for (GameObject* object : this->_objects) { this->drawObject<GameObject>(object); }
 	for (AnimatedGameObject* animatedObject : this->_animatedObjects) { this->drawObject<AnimatedGameObject>(animatedObject); }
 	for (Cell* cell : this->_cells) { this->drawObject<Cell>(cell); }
+	
+	this->_minimap->draw(*this->_graphics);
 }
 
 template <typename T>
@@ -89,7 +96,7 @@ void Observer::drawObject(T* object) {
 	else {
 		objY = topLeftBlend.second * pow(globals::SCALE_MULTIPLIER, this->_scale);
 	}
-	//right point of the				object							  observer
+	//right point of the				object					  observer
 	botRightOffset.first = (object->getX() + object->getWidth()) - (x + w);
 	botRightOffset.second = (object->getY() + object->getHeight()) - (y + h);
 
@@ -106,6 +113,7 @@ void Observer::update() {
 
 void Observer::clear() {
 	this->_terrain = nullptr;
+	this->_minimap = nullptr;
 	this->_objects.clear();
 	this->_animatedObjects.clear();
 	this->_cells.clear();

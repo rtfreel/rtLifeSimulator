@@ -43,6 +43,21 @@ void Cell::update(float elapsedTime) {
 	this->_x += this->_dx * elapsedTime;
 	this->_y += this->_dy * elapsedTime;
 
+	int tmp1 = (int)((float)rand() / RAND_MAX * 2);
+	int tmp2 = (int)((float)rand() / RAND_MAX * 2);
+	switch (tmp1) {
+	case 0: moveLeft();
+		break;
+	case 1:	moveRight();
+		break;
+	}
+	switch (tmp2) {
+	case 0: moveUp();
+		break;
+	case 1:	moveDown();
+		break;
+	}
+
 	AnimatedGameObject::update(elapsedTime);
 }
 

@@ -40,7 +40,9 @@ void GameObject::draw(Graphics &graphics, int x, int y, std::pair<int, int> topL
 	graphics.blitSurface(this->_spriteSheet, &this->_sourceRect, &destinationRectangle);
 }
 
-void GameObject::update() {}
+void GameObject::update() {
+	wraparound();
+}
 
 float GameObject::getX() {
 	return this->_x;
@@ -73,5 +75,48 @@ void GameObject::decrease() {
 	}
 	else {
 		this->_scale = 0;
+	}
+}
+
+void GameObject::setScale(int scale) {
+	if (scale < 0) {
+		this->_scale = 0;
+	}
+	else if (this->_scale > globals::SCALE_LIMIT) {
+		this->_scale = globals::SCALE_LIMIT;
+	}
+	else {
+		this->_scale = scale;
+	}
+}
+
+void GameObject::setXWraparound(int min, int max) {
+	this->_wrapX = true;
+	this->_wrapXMin = min;
+	this->_wrapXMax = max;
+}
+
+void GameObject::setYWraparound(int min, int max) {
+	this->_wrapY = true;
+	this->_wrapYMin = min;
+	this->_wrapYMax = max;
+}
+
+void GameObject::wraparound() {
+	if (this->_wrapX) {
+		if (this->getX() < this->_wrapXMin) {
+			this->_x = this->_wrapXMax;
+		}
+		if (this->getX() > this->_wrapXMax) {
+			this->_x = this->_wrapXMin;
+		}
+	}
+	if (this->_wrapY) {
+		if (this->getY() < this->_wrapYMin) {
+			this->_y = this->_wrapYMax;
+		}
+		if (this->getY() > this->_wrapYMax) {
+			this->_y = this->_wrapYMin;
+		}
 	}
 }

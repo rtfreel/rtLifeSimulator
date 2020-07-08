@@ -11,6 +11,14 @@ namespace globals {
 	const int SCALE_LIMIT = 20;
 	const double SCALE_MULTIPLIER = 1.1892071150027;
 
+	const int MAP_WIDTH = 2048;
+	const int MAP_HEIGHT = 2048;
+
+	const int MINIMAP_WIDTH = 256;
+	const int MINIMAP_HEIGHT = 256;
+	const int MINIMAP_X = 1331;
+	const int MINIMAP_Y = 13;
+
 	const std::vector<std::string> CELL_ANIMATIONS = {
 		"source/sprites/blue_cell.png",
 		"source/sprites/brown_cell.png",

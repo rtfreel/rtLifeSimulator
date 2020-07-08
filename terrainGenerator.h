@@ -2,6 +2,7 @@
 #define TERRAIN_GENERATOR_H
 
 #include "terrain.h"
+#include "minimap.h"
 
 class Graphics;
 
@@ -11,6 +12,7 @@ public:
 	TerrainGenerator(Graphics& graphics, int width, int height, int detalisation, float smoothness = 2.0f);
 
 	Terrain* getTerrain();
+	Minimap* getMinimap();
 
 private:
 	void generateSeed();
@@ -21,6 +23,7 @@ private:
 	float* _seed;
 	float* _noise;
 	Terrain* _terrain;
+	Minimap* _minimap;
 };
 
 #endif
