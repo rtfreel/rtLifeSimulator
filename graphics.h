@@ -23,7 +23,6 @@ public:
 
 	SDL_Renderer* getRenderer() const;
 private:
-	const int WIDTH = 1600, HEIGHT = 800;
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
 

@@ -1,13 +1,14 @@
+#include "graphics.h"
+#include "globals.h"
+#include <SDL.h>
+#include <SDL_image.h>
+
 /* graphics.cpp
  * Holds all information dealing with graphics for the game
  */
 
-#include "graphics.h"
-#include <SDL.h>
-#include <SDL_image.h>
-
 Graphics::Graphics() {
-    SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI, &this->_window, &this->_renderer);
+    SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI, &this->_window, &this->_renderer);
     SDL_SetWindowTitle(this->_window, "Life Simulator 1.0");
 }
 

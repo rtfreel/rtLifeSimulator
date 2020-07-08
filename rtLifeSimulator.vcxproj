@@ -144,15 +144,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animatedGameObject.cpp" />
+    <ClCompile Include="cell.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="minimap.cpp" />
+    <ClCompile Include="observer.cpp" />
+    <ClCompile Include="terrain.cpp" />
+    <ClCompile Include="terrainGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animatedGameObject.h" />
+    <ClInclude Include="cell.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="gameObject.h" />
+    <ClInclude Include="globals.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="minimap.h" />
+    <ClInclude Include="observer.h" />
+    <ClInclude Include="terrain.h" />
+    <ClInclude Include="terrainGenerator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="source\sprites\blue_cell.png" />
+    <Image Include="source\sprites\brown_cell.png" />
+    <Image Include="source\sprites\green_cell.png" />
+    <Image Include="source\sprites\grey_cell.png" />
+    <Image Include="source\sprites\red_cell.png" />
+    <Image Include="source\sprites\purple_cell.png" />
+    <Image Include="source\sprites\terrain_palette.png" />
+    <Image Include="source\sprites\yellow_cell.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
