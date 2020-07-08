@@ -23,7 +23,9 @@ public:
 private:
 	std::string getRandomColor();
 
-	float _dx = 0, _dy = 0;
+	Vector2D _vel, _acc;
+	float _hp, _hunger, _area;
+	float _fair, _anger, _friend;
 };
 
 #endif

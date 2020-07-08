@@ -19,29 +19,31 @@ void Cell::animationDone(std::string currentAnimation) {}
 
 //TODO: rewrite all
 void Cell::moveLeft() {
-	this->_dx = -0.2f;
+	this->_acc.x = -0.002f;
 }
 
 void Cell::moveRight() {
-	this->_dx = 0.2f;
+	this->_acc.x = 0.002f;
 }
 
 void Cell::moveUp() {
-	this->_dy = -0.2f;
+	this->_acc.y = -0.002f;
 }
 
 void Cell::moveDown() {
-	this->_dy = 0.2f;
+	this->_acc.y = 0.002f;
 }
 
 void Cell::stopMoving() {
-	this->_dx = 0;
-	this->_dy = 0;
+	this->_vel.reset();
 }
 
 void Cell::update(float elapsedTime) {
-	this->_x += this->_dx * elapsedTime;
-	this->_y += this->_dy * elapsedTime;
+	this->_vel.add(this->_acc);
+	this->_acc.reset();
+
+	this->_x += this->_vel.x * elapsedTime;
+	this->_y += this->_vel.y * elapsedTime;
 
 	int tmp1 = (int)((float)rand() / RAND_MAX * 2);
 	int tmp2 = (int)((float)rand() / RAND_MAX * 2);
